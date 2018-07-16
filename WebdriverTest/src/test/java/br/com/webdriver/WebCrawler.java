@@ -14,7 +14,7 @@ import org.testng.annotations.Test;
 import br.com.webdriver.config.DriverBase;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class NewTest extends DriverBase {
+public class WebCrawler extends DriverBase {
 	
 	private WebDriver driver;
   
@@ -23,12 +23,14 @@ public class NewTest extends DriverBase {
 		
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        driver.get("https://g1.globo.com/");
+        driver.get("https://www.globo.com/");
 
-        String search_text = "Google Search";
-        WebElement search_button = driver.findElement(By.name("btnK"));
+        String search_text = "encontre na globo.com";
+        WebElement search = driver.findElement(By.id("home-search-field"));
+        search.clear();
+        search.sendKeys("ROBOS");
 
-        String text = search_button.getAttribute("value");
+        String text = search.getAttribute("value");
 
         Assert.assertEquals(text, search_text, "Text not found!");
 	}
