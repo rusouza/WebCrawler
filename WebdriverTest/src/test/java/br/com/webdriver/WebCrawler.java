@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -22,13 +24,17 @@ public class WebCrawler extends DriverBase {
 	public void primeiroTeste() {
 		
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.get("https://g1.globo.com");
 
-        driver.get("https://www.globo.com/");
-
-        String search_text = "encontre na globo.com";
-        WebElement search = driver.findElement(By.id("home-search-field"));
-        search.clear();
-        search.sendKeys("ROBOS");
+        String search_text = "BUSCAR";
+        //WebElement search = driver.findElement(By.id("busca-campo"));
+        WebDriverWait wait = new WebDriverWait(driver,30);
+        
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("busca-campo")));
+        WebElement search = driver.findElement(By.id("busca-campo"));
+        //search.clear();
+        search.click();
+        search.sendKeys("ROBÔS");
 
         String text = search.getAttribute("value");
 
