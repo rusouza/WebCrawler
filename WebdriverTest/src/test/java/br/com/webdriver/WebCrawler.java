@@ -66,8 +66,6 @@ public class WebCrawler extends DriverBase {
         		noticia.setTitulo(titulo.getText());
         		noticia.setLink(titulo.getAttribute("href"));
         		
-        		insert(noticia);
-        		
         		listNoticias.add(noticia);
         	}
         }
