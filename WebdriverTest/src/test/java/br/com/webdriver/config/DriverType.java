@@ -12,7 +12,7 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-public enum DriverType implements DriverSetup {
+public enum DriverType {
 	
 	FIREFOX {
 		public RemoteWebDriver getWebDriverObject(DesiredCapabilities capabilities) {

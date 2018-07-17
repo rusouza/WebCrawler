@@ -76,7 +76,7 @@ public class WebCrawler extends DriverBase {
 	}
 	
 	public void insert(Noticias noticias) {
-		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("webdriver");
+		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("WebdriverTest");
         EntityManager manager = entityManagerFactory.createEntityManager();
 
         manager.getTransaction().begin();
