@@ -51,10 +51,10 @@ public class DriverFactory {
     
     private void instantiateWebDriver(DriverType driverType) throws MalformedURLException {
         System.out.println(" ");
-        System.out.println("Local Operating System: " + operatingSystem);
-        System.out.println("Local Architecture: " + systemArchitecture);
-        System.out.println("Selected Browser: " + selectedDriverType);
-        System.out.println("Connecting to Selenium Grid: " + useRemoteWebDriver);
+        System.out.println("Sistema Operacional: " + operatingSystem);
+        System.out.println("Arquitetura: " + systemArchitecture);
+        System.out.println("Browser Selecionado: " + selectedDriverType);
+        System.out.println("Conectando ao Selenium: " + useRemoteWebDriver);
         System.out.println(" ");
 
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();

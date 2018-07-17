@@ -52,6 +52,39 @@
     	<artifactId>webdrivermanager</artifactId>
     	<version>2.2.4</version>
 	</dependency>
+	
+	<!-- Inicio Hibernate -->
+	<dependency>
+    	<groupId>org.hibernate</groupId>
+    	<artifactId>hibernate-core</artifactId>
+    	<version>5.3.2.Final</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.hibernate</groupId>
+	    <artifactId>hibernate-entitymanager</artifactId>
+	    <version>5.3.2.Final</version>
+	</dependency>
+	
+	<!-- Fim Hibernate -->
+	
+	<dependency>
+    	<groupId>mysql</groupId>
+    	<artifactId>mysql-connector-java</artifactId>
+    	<version>6.0.6</version>
+	</dependency>	
+	
+	<dependency>
+       <groupId>org.slf4j</groupId>
+       <artifactId>slf4j-api</artifactId>
+       <version>1.7.5</version>
+   </dependency>
+   
+   <dependency>
+       <groupId>org.slf4j</groupId>
+       <artifactId>slf4j-log4j12</artifactId>
+       <version>1.7.5</version>
+   </dependency>
 
   </dependencies>
   

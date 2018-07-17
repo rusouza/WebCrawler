@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,6 +26,8 @@ public class WebCrawler extends DriverBase {
 	private WebDriver driver;
 	private List<WebElement> listItens = new ArrayList<WebElement>(); 
 	private List<Noticias> listNoticias = new ArrayList<Noticias>();
+	EntityManagerFactory factory;
+    EntityManager manager;
   
 	@Test(alwaysRun = true)
 	public void primeiroTeste() throws InterruptedException {
@@ -45,7 +51,7 @@ public class WebCrawler extends DriverBase {
         for (WebElement item : resultList) {
     		listItens.add(item);
     		
-    		if(cont>3)
+    		if(cont>2)
     			break;
     		
     		cont++;
@@ -60,12 +66,23 @@ public class WebCrawler extends DriverBase {
         		noticia.setTitulo(titulo.getText());
         		noticia.setLink(titulo.getAttribute("href"));
         		
+        		insert(noticia);
+        		
         		listNoticias.add(noticia);
         	}
         }
-        	Assert.assertTrue(true);
+        
+        Assert.assertTrue(true);
+	}
+	
+	public void insert(Noticias noticias) {
+		EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("webdriver");
+        EntityManager manager = entityManagerFactory.createEntityManager();
 
-       // Assert.assertEquals("asdas", "asda", "Text not found!");
+        manager.getTransaction().begin();
+        manager.persist(noticias);
+        manager.getTransaction().commit();
+        manager.close();
 	}
  
 	@BeforeClass
