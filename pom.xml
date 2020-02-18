@@ -1,0 +1,155 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>WebdriverTest</groupId>
+  <artifactId>WebdriverTest</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  
+  <properties>
+  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  	<headless>true</headless>
+  	<proxyEnabled>false</proxyEnabled>
+  	<seleniumGridURL/>
+  	<browser>chrome</browser>
+  	<threads>1</threads>
+  	<remote>false</remote>
+  	<platform/>
+  	<browserVersion/>
+  	<proxyHost/>
+    <proxyPort/>
+  </properties>
+  
+  <dependencies>
+  
+  	<dependency>				
+    	<groupId>junit</groupId>								
+        <artifactId>junit</artifactId>								
+        <version>4.11</version>								
+        <scope>test</scope>								
+    </dependency>
+    
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>6.8.8</version>
+    </dependency>
+    	
+  	<dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>		
+    </dependency>
+    
+	<dependency>
+		<groupId>org.seleniumhq.selenium</groupId>
+    	<artifactId>selenium-chrome-driver</artifactId>
+    	<version>3.13.0</version>
+	</dependency>
+	
+	<dependency>
+    	<groupId>io.github.bonigarcia</groupId>
+    	<artifactId>webdrivermanager</artifactId>
+    	<version>2.2.4</version>
+	</dependency>
+	
+	<!-- Inicio Hibernate -->
+	<dependency>
+    	<groupId>org.hibernate</groupId>
+    	<artifactId>hibernate-core</artifactId>
+    	<version>5.3.2.Final</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.hibernate</groupId>
+	    <artifactId>hibernate-entitymanager</artifactId>
+	    <version>5.3.2.Final</version>
+	</dependency>
+	
+	<!-- Fim Hibernate -->	
+	
+	<dependency>
+    	<groupId>mysql</groupId>
+    	<artifactId>mysql-connector-java</artifactId>
+    	<version>6.0.6</version>
+	</dependency>	
+	
+	<dependency>
+       <groupId>org.slf4j</groupId>
+       <artifactId>slf4j-api</artifactId>
+       <version>1.7.5</version>
+   </dependency>
+   
+   <dependency>
+       <groupId>org.slf4j</groupId>
+       <artifactId>slf4j-log4j12</artifactId>
+       <version>1.7.5</version>
+   </dependency>
+
+  </dependencies>
+  
+  <build>
+  	<plugins>
+  		<plugin>
+    		<groupId>org.apache.maven.plugins</groupId>
+    		<artifactId>maven-compiler-plugin</artifactId>
+    		<configuration>
+     			<source>1.8</source>
+    				<target>1.8</target>
+    		</configuration>
+   		</plugin>
+   		
+   		<plugin>
+   			<groupId>org.apache.maven.plugins</groupId>
+    		<artifactId>maven-surefire-plugin</artifactId>
+    		<version>2.18.1</version>
+    		<configuration>
+     			<suiteXmlFiles>
+      				<suiteXmlFile>testng.xml</suiteXmlFile>
+    			 </suiteXmlFiles>
+    		</configuration>
+   		</plugin>
+   		
+   		<plugin>
+        	<groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-failsafe-plugin</artifactId>
+           	<version>2.21.0</version>
+            <configuration>
+            	<parallel>methods</parallel>
+               	<threadCount>${threads}</threadCount>
+            	<systemPropertyVariables>
+            		<browser>${browser}</browser>
+                	<screenshotDirectory>${project.build.directory}/screenshots</screenshotDirectory>
+                	<remoteDriver>${remote}</remoteDriver>
+                	<gridURL>${seleniumGridURL}</gridURL>
+              		<desiredPlatform>${platform}</desiredPlatform>
+                	<desiredBrowserVersion>${browserVersion}</desiredBrowserVersion>
+                	<proxyEnabled>${proxyEnabled}</proxyEnabled>
+                	<proxyHost>${proxyHost}</proxyHost>
+                	<proxyPort>${proxyPort}</proxyPort>
+                	<headless>${headless}</headless>
+                	
+                	<!--Set properties passed in by the driver binary downloader-->
+                	<webdriver.chrome.driver>${webdriver.chrome.driver}</webdriver.chrome.driver>
+                	<webdriver.ie.driver>${webdriver.ie.driver}</webdriver.ie.driver>
+                	<webdriver.opera.driver>${webdriver.opera.driver}</webdriver.opera.driver>
+           	 		<webdriver.gecko.driver>${webdriver.gecko.driver}</webdriver.gecko.driver>
+                	<webdriver.edge.driver>${webdriver.edge.driver}</webdriver.edge.driver>
+                </systemPropertyVariables>
+			</configuration>
+            <executions>
+            	<execution>
+                	<goals>
+                    	<goal>integration-test</goal>
+                        <!--This goal makes the build fail if you have test failures-->
+                        <goal>verify</goal>
+                  	</goals>
+            	</execution>
+          	</executions>
+		</plugin>
+		
+		
+  	</plugins>
+  </build>
+  
+</project>
