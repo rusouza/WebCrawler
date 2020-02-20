@@ -12,6 +12,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -40,10 +42,13 @@ public class WebCrawler extends DriverBase {
         
         search.clear();
         search.sendKeys("ROBÔS");
-        
         search.submit();
-        
-        Thread.sleep(7200);
+
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[class='filters__selected-filter']>span:nth-child(2)")));
+
+        ////div[@class="filters__selected-filter"]/span[2]
+        //Thread.sleep(7200);
         
         WebElement result = driver.findElement(By.cssSelector("#content > div > div > ul"));
         List<WebElement> resultList = result.findElements(By.tagName("li"));

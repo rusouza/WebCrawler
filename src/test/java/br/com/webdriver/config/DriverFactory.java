@@ -9,6 +9,8 @@ import org.openqa.selenium.Proxy.ProxyType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import static org.openqa.selenium.remote.CapabilityType.PROXY;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class DriverFactory {
 	
@@ -22,6 +24,8 @@ public class DriverFactory {
     private final String proxyHostname = System.getProperty("proxyHost");
     private final Integer proxyPort = Integer.getInteger("proxyPort");
     private final String proxyDetails = String.format("%s:%d", proxyHostname, proxyPort);
+
+    Logger logger = LoggerFactory.getLogger(DriverFactory.class);
     
     public DriverFactory() {
     	DriverType driverType = DriverType.CHROME;
@@ -41,7 +45,6 @@ public class DriverFactory {
         if (null == driver) {
             instantiateWebDriver(selectedDriverType);
         }
-
         return driver;
     }
     
@@ -50,12 +53,13 @@ public class DriverFactory {
     }
     
     private void instantiateWebDriver(DriverType driverType) throws MalformedURLException {
-        System.out.println(" ");
-        System.out.println("Sistema Operacional: " + operatingSystem);
-        System.out.println("Arquitetura: " + systemArchitecture);
-        System.out.println("Browser Selecionado: " + selectedDriverType);
-        System.out.println("Conectando ao Selenium: " + useRemoteWebDriver);
-        System.out.println(" ");
+
+        logger.info("---------------------------------------------");
+        logger.info("Sistema Operacional: " + operatingSystem);
+        logger.info("Arquitetura: " + systemArchitecture);
+        logger.info("Browser Selecionado: " + selectedDriverType);
+        logger.info("Conectando ao Selenium: " + useRemoteWebDriver);
+        logger.info("---------------------------------------------");
 
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 
