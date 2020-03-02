@@ -8,4 +8,5 @@
   <li>Hibernate</li>
   <li>Selenium</li>
   <li>Java 1.8</li>
+  <li>logback</li>
 </ul>
