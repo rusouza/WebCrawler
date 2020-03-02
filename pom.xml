@@ -2,8 +2,15 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>WebdriverTest</groupId>
 	<artifactId>WebdriverTest</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<version>1.0.0</version>
+
+	<developers>
+		<developer>
+			<id>rusouza</id>
+			<name>Ruggeri Oliveira</name>
+			<email>ruggeri_oliveira@hotmail.com</email>
+		</developer>
+	</developers>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -128,12 +135,6 @@
 						<proxyPort>${proxyPort}</proxyPort>
 						<headless>${headless}</headless>
 
-						<!--Set properties passed in by the driver binary downloader-->
-						<webdriver.chrome.driver>${webdriver.chrome.driver}</webdriver.chrome.driver>
-						<webdriver.ie.driver>${webdriver.ie.driver}</webdriver.ie.driver>
-						<webdriver.opera.driver>${webdriver.opera.driver}</webdriver.opera.driver>
-						<webdriver.gecko.driver>${webdriver.gecko.driver}</webdriver.gecko.driver>
-						<webdriver.edge.driver>${webdriver.edge.driver}</webdriver.edge.driver>
 					</systemPropertyVariables>
 				</configuration>
 				<executions>
